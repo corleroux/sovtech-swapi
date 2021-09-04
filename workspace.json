@@ -1,0 +1,191 @@
+{
+  "version": 2,
+  "projects": {
+    "api": {
+      "root": "apps/api",
+      "sourceRoot": "apps/api/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/api",
+            "main": "apps/api/src/main.ts",
+            "tsConfig": "apps/api/tsconfig.app.json",
+            "assets": ["apps/api/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/api/src/environments/environment.ts",
+                  "with": "apps/api/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "api:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/api/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/api"],
+          "options": {
+            "jestConfig": "apps/api/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "api-interfaces": {
+      "root": "libs/api-interfaces",
+      "sourceRoot": "libs/api-interfaces/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/api-interfaces/**/*.ts"]
+          }
+        }
+      }
+    },
+    "sovtech-swapi": {
+      "root": "apps/sovtech-swapi",
+      "sourceRoot": "apps/sovtech-swapi/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/sovtech-swapi",
+            "index": "apps/sovtech-swapi/src/index.html",
+            "main": "apps/sovtech-swapi/src/main.tsx",
+            "polyfills": "apps/sovtech-swapi/src/polyfills.ts",
+            "tsConfig": "apps/sovtech-swapi/tsconfig.app.json",
+            "assets": [
+              "apps/sovtech-swapi/src/favicon.ico",
+              "apps/sovtech-swapi/src/assets"
+            ],
+            "styles": [],
+            "scripts": [],
+            "webpackConfig": "@nrwl/react/plugins/webpack"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/sovtech-swapi/src/environments/environment.ts",
+                  "with": "apps/sovtech-swapi/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "sovtech-swapi:build",
+            "hmr": true,
+            "proxyConfig": "apps/sovtech-swapi/proxy.conf.json"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "sovtech-swapi:build:production",
+              "hmr": false
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/sovtech-swapi/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/sovtech-swapi"],
+          "options": {
+            "jestConfig": "apps/sovtech-swapi/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "sovtech-swapi-e2e": {
+      "root": "apps/sovtech-swapi-e2e",
+      "sourceRoot": "apps/sovtech-swapi-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/sovtech-swapi-e2e/cypress.json",
+            "devServerTarget": "sovtech-swapi:serve",
+            "tsConfig": "apps/sovtech-swapi-e2e/tsconfig.json"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "sovtech-swapi:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/sovtech-swapi-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/react"
+  },
+  "generators": {
+    "@nrwl/react": {
+      "application": {
+        "style": "styled-components",
+        "linter": "eslint",
+        "babel": true
+      },
+      "component": {
+        "style": "styled-components"
+      },
+      "library": {
+        "style": "styled-components",
+        "linter": "eslint"
+      }
+    }
+  },
+  "defaultProject": "sovtech-swapi"
+}
