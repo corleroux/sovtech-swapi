@@ -1,16 +1,21 @@
 import * as express from 'express';
-import { Message } from '@sovtech-swapi/api-interfaces';
+import { ApolloServer, gql } from 'apollo-server-express';
+import { schema } from './schema';
 
-const app = express();
+const http = require('http');
 
-const greeting: Message = { message: 'Welcome to api!' };
+async function startApolloServer(schema) {
+  const app = express();
+  const httpServer = http.createServer(app);
+  const server = new ApolloServer({ schema });
+  await server.start();
 
-app.get('/api', (req, res) => {
-  res.send(greeting);
-});
+  server.applyMiddleware({ app });
+  const port = process.env.port || 3333;
+  await new Promise((resolve) => httpServer.listen({ port: port }, resolve));
+  console.log(
+    `🚀 Server ready at http://localhost:${port}${server.graphqlPath}`
+  );
+}
 
-const port = process.env.port || 3333;
-const server = app.listen(port, () => {
-  console.log('Listening at http://localhost:' + port + '/api');
-});
-server.on('error', console.error);
+startApolloServer(schema);
