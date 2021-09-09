@@ -4,10 +4,10 @@ import {
   GraphQLSchema,
   GraphQLString,
 } from 'graphql';
-import { gql } from 'apollo-server-express';
+
 import fetch from 'node-fetch';
 
-const BASE_URL = 'http://localhost:8000/api';
+const BASE_URL = 'https://swapi.dev/api';
 
 function getPeopleById(relativeUrl) {
   console.log(`${BASE_URL}/${relativeUrl}`);
@@ -29,7 +29,7 @@ function fetchResourceByUrl(url) {
   return fetch(url)
     .then((res) => res.json())
     .then((json) => {
-      console.log(json.results);
+      console.log(json);
     })
     .catch((err) => {
       console.log('Fetch Error :-S', err);
