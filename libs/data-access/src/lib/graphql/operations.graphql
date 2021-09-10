@@ -1,0 +1,50 @@
+query fetchPeople {
+  fetchPeople {
+    count
+    next
+    previous
+    people {
+      name
+      gender
+      skin_color
+      hair_color
+      height
+      eye_color
+      mass
+      birth_year
+    }
+  }
+}
+
+query fetchPage($fetchPagePage: String) {
+  fetchPage(page: $fetchPagePage) {
+    count
+    next
+    previous
+    people {
+      name
+      gender
+      skin_color
+      hair_color
+      height
+      eye_color
+      mass
+      birth_year
+    }
+  }
+}
+
+query fetchPerson($name: String) {
+  fetchPerson(name: $name) {
+    people {
+      name
+      gender
+      skin_color
+      hair_color
+      height
+      eye_color
+      mass
+      birth_year
+    }
+  }
+}

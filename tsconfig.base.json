@@ -16,7 +16,9 @@
     "baseUrl": ".",
     "paths": {
       "@sovtech-swapi/api-interfaces": ["libs/api-interfaces/src/index.ts"],
-      "@sovtech-swapi/data": ["libs/data/src/index.ts"]
+      "@sovtech-swapi/data": ["libs/data/src/index.ts"],
+      "@sovtech-swapi/data-access": ["libs/data-access/src/index.ts"],
+      "@sovtech-swapi/feature-sets": ["libs/feature-sets/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

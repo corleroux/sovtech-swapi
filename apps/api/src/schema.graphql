@@ -1,0 +1,30 @@
+type Query {
+  fetchPeople: People
+  fetchPage(page: String): People
+  fetchPerson(name: String): People
+}
+
+"""
+A people within the Star Wars universe
+"""
+type People {
+  count: String
+  next: String
+  previous: String
+  people: [Person]
+}
+
+"""
+An individual within the Star Wars universe
+"""
+type Person {
+  name: String
+  gender: String
+  skin_color: String
+  hair_color: String
+  height: String
+  eye_color: String
+  mass: String
+  homeworld: String
+  birth_year: String
+}

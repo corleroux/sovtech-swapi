@@ -6,6 +6,7 @@ import {
   GraphQLObjectType,
   GraphQLSchema,
   GraphQLString,
+  printSchema,
 } from 'graphql';
 import fetch from 'node-fetch';
 
@@ -98,5 +99,7 @@ const QueryType = new GraphQLObjectType({
 const schema = new GraphQLSchema({
   query: QueryType,
 });
+
+console.log(printSchema(schema));
 
 export { schema };
