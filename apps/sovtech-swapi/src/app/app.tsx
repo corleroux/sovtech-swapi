@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
-import { Box, Grommet,Heading } from 'grommet';
+import { Box, Grommet } from 'grommet';
 import { hpe } from 'grommet-theme-hpe';
-import { PeopleList } from '@sovtech-swapi/feature-sets';
+import { PeopleList, Heading, Person } from '@sovtech-swapi/feature-sets';
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
@@ -22,13 +22,9 @@ export const App = () => {
     <ApolloProvider client={client}>
       <Grommet theme={hpe}>
         <Box>
-          <Heading >Welcome to sovtech-swapi!</Heading>
-          <img
-            width="450"
-            src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png"
-            alt="Nx - Smart, Extensible Build Framework"
-          />
+          <Heading />
           <PeopleList />
+          <Person />
         </Box>
       </Grommet>
     </ApolloProvider>
