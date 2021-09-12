@@ -1,9 +1,9 @@
-import { Box, Heading, Text } from 'grommet';
+import { Box, Button, Heading, Layer, Text } from 'grommet';
 import ListItem from '../list-item/list-item';
 import { List } from '../list/list';
 import styled from 'styled-components';
 import { useFetchPersonQuery } from '@sovtech-swapi/data-access';
-import { FC, MouseEvent, useState } from 'react';
+import { FC } from 'react';
 
 /* eslint-disable-next-line */
 export interface PersonProps {}
@@ -24,6 +24,20 @@ export const Person: FC<PersonProps> = (props) => {
 
   return (
     <StyledPerson>
+      <Layer
+        position="center"
+        onEsc={() => setShow(false)}
+        onClickOutside={() => setShow(false)}
+      >
+        <Box margin="medium">
+          <Text>{clicked && JSON.stringify(clicked, null, 2)}</Text>
+          <Button
+            margin={{ top: 'medium' }}
+            label="close"
+            onClick={() => setShow(false)}
+          />
+        </Box>
+      </Layer>
       {data?.fetchPerson?.people?.map((person, index) => (
         <div key={index}>
           <Box align="center" pad="large">

@@ -1,3 +1,4 @@
+export * from './lib/people-grid/people-grid';
 export * from './lib/pagination/pagination';
 export * from './lib/list/list';
 export * from './lib/list-item/list-item';

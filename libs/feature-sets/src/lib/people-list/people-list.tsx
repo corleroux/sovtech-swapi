@@ -15,6 +15,7 @@ const StyledPeopleList = styled.div`
 export const PeopleList: FC<PeopleListProps> = (props) => {
   const [curPage, setCurPage] = useState<number>(1);
   const { data, loading, error } = useFetchPeopleQuery();
+
   if (loading) return <p>loading...</p>;
   if (error) return <p>Error - please try again later</p>;
 
