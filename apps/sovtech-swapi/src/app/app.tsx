@@ -8,6 +8,7 @@ import {
   Person,
   PeopleGrid,
 } from '@sovtech-swapi/feature-sets';
+import { PeopleProvider } from '@sovtech-swapi/data-access';
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
@@ -26,10 +27,12 @@ export const App = () => {
   return (
     <ApolloProvider client={client}>
       <Grommet theme={hpe}>
-        <Box>
-          <Heading />
-          <PeopleGrid />
-        </Box>
+        <PeopleProvider>
+          <Box>
+            <Heading />
+            <PeopleGrid />
+          </Box>
+        </PeopleProvider>
       </Grommet>
     </ApolloProvider>
   );

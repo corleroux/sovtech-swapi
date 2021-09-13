@@ -24,7 +24,7 @@ export const Person: FC<PersonProps> = (props) => {
 
   return (
     <StyledPerson>
-      <Layer
+      {/* <Layer
         position="center"
         onEsc={() => setShow(false)}
         onClickOutside={() => setShow(false)}
@@ -37,7 +37,7 @@ export const Person: FC<PersonProps> = (props) => {
             onClick={() => setShow(false)}
           />
         </Box>
-      </Layer>
+      </Layer> */}
       {data?.fetchPerson?.people?.map((person, index) => (
         <div key={index}>
           <Box align="center" pad="large">
