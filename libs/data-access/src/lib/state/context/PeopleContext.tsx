@@ -18,6 +18,7 @@ import React, {
 // STATE
 
 export interface IPeopleContextProps {
+  state: IPeopleState;
   getPeopleState: () => IPeopleState;
   setShowPerson: (data: boolean | undefined) => void;
   setPeopleData: (data: RowType | undefined) => void;
@@ -29,6 +30,7 @@ export const InitialPeopleState: IPeopleState = {
 };
 
 export const initialPeopleContext: IPeopleContextProps = {
+  state: {},
   getPeopleState: () => InitialPeopleState,
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   setShowPerson: (x) => x,
@@ -54,14 +56,13 @@ export interface IPeopleReducerAction extends IPeopleState {
 const reducer = (state: IPeopleState, action: IPeopleReducerAction) => {
   console.log('This is reducer', { action, state });
   const { handler } = action;
-  //console.log(show);
   if (handler === 'SHOW_PERSON') {
     console.log(action);
-    state.show = action.payload.show;
+    state = { ...state, show: action.payload.show };
     return state;
   }
   if (handler === 'PERSON_DATA') {
-    state.person = action.payload.person;
+    state = { ...state, person: action.payload.person };
   }
   return state;
 };
@@ -98,7 +99,7 @@ export const PeopleProvider = ({ children }: PeopleProviderProps) => {
 
   const getPeopleState = () => state;
 
-  const value = { getPeopleState, setShowPerson, setPeopleData };
+  const value = { state, getPeopleState, setShowPerson, setPeopleData };
   return (
     <PeopleContext.Provider value={value}>{children}</PeopleContext.Provider>
   );

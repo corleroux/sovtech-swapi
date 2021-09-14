@@ -23,17 +23,10 @@ export interface PeopleGridProps {}
 const StyledPeopleGrid = styled.div``;
 
 export const PeopleGrid: FC<PeopleGridProps> = (props) => {
-  console.log('GRID RENDER');
   const { getPeopleState, setShowPerson, setPeopleData } =
     useContext(PeopleContext);
-  const state = (): IPeopleState => getPeopleState();
-  const { show, person } = state();
-  // useEffect(() => {
-  //   console.log('Effect', state);
-  // }, [state]);
 
   const [curPage, setCurPage] = useState<number>(1);
-  // const showPerson = () => setShowPerson(true);
 
   const handleClick = (event: MouseClick<RowType> | KeyPress<RowType>) => {
     setShowPerson(true);
@@ -44,7 +37,7 @@ export const PeopleGrid: FC<PeopleGridProps> = (props) => {
   if (loading) return <p>loading...</p>;
   if (error) return <p>Error - please try again later</p>;
   const tableData: RowType[] | undefined = DATA(data);
-  console.log('SHOW', show);
+
   return (
     <StyledPeopleGrid>
       <Box align="center" pad="large">
@@ -59,7 +52,6 @@ export const PeopleGrid: FC<PeopleGridProps> = (props) => {
           }}
         />
       </Box>
-      {show && <Person></Person>}
     </StyledPeopleGrid>
   );
 };

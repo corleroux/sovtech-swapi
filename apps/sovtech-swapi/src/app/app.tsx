@@ -2,12 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
 import { Box, Grommet } from 'grommet';
 import { hpe } from 'grommet-theme-hpe';
-import {
-  PeopleList,
-  Heading,
-  Person,
-  PeopleGrid,
-} from '@sovtech-swapi/feature-sets';
+import { Heading, Starwars } from '@sovtech-swapi/feature-sets';
 import { PeopleProvider } from '@sovtech-swapi/data-access';
 
 const client = new ApolloClient({
@@ -30,7 +25,7 @@ export const App = () => {
         <PeopleProvider>
           <Box>
             <Heading />
-            <PeopleGrid />
+            <Starwars />
           </Box>
         </PeopleProvider>
       </Grommet>

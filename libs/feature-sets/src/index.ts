@@ -1,3 +1,4 @@
+export * from './lib/starwars/starwars';
 export * from './lib/people-grid/people-grid';
 export * from './lib/people-grid/people-grid-data';
 export * from './lib/pagination/pagination';
