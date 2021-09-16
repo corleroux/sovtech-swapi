@@ -10,7 +10,7 @@ import {
 } from 'graphql';
 import fetch from 'node-fetch';
 
-const BASE_URL = process.env.base_url || 'https://swapi.dev/api';
+const BASE_URL = process.env.base_url || 'http://3.248.199.115/api';
 
 function getPersonByUrl(url) {
   return fetch(url)

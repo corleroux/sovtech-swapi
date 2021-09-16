@@ -7,7 +7,7 @@ import {
 
 import fetch from 'node-fetch';
 
-const BASE_URL = 'https://swapi.dev/api';
+const BASE_URL = 'http://3.248.199.115/api';
 
 function getPeopleById(relativeUrl) {
   console.log(`${BASE_URL}/${relativeUrl}`);

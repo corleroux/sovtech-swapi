@@ -37,12 +37,6 @@ export const PeopleGrid: FC<PeopleGridProps> = (props) => {
     setCharacterSearch(event.datum.name);
   };
 
-  // const { data, loading, error } = useFetchPageQuery({
-  //   variables: {
-  //     fetchPagePage: curPage.toString(),
-  //   },
-  // });
-
   useEffect(() => {
     if (state.currentPage) {
       setCurPage(state.currentPage);
