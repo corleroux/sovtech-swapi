@@ -7,18 +7,10 @@ import { PeopleProvider } from '@sovtech-swapi/data-access';
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  uri: 'http://localhost:3333/graphql',
+  uri: 'http://3.248.199.115:3333/graphql',
 });
 
 export const App = () => {
-  // const [m, setMessage] = useState<Message>({ message: '' });
-
-  // useEffect(() => {
-  //   fetch('/api')
-  //     .then((r) => r.json())
-  //     .then(setMessage);
-  // }, []);
-
   return (
     <ApolloProvider client={client}>
       <Grommet theme={hpe}>

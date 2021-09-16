@@ -69,7 +69,6 @@ export const PeopleGrid: FC<PeopleGridProps> = (props) => {
             setCurrentPage(state.currentPage);
             setCurPage(state.currentPage);
           }
-          return;
         }
         if (state.currentPage) {
           setCurrentPage(state.currentPage - 1);
