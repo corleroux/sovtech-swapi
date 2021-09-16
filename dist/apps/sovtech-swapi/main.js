@@ -1099,8 +1099,6 @@ const PeopleGrid = props => {
             setCurrentPage(state.currentPage);
             setCurPage(state.currentPage);
           }
-
-          return;
         }
 
         if (state.currentPage) {
@@ -1119,19 +1117,19 @@ const PeopleGrid = props => {
       columns: _people_grid_data__WEBPACK_IMPORTED_MODULE_4__["columns"]
     }, void 0, false, {
       fileName: _jsxFileName,
-      lineNumber: 84,
+      lineNumber: 83,
       columnNumber: 7
     }, undefined), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_9__["jsxDEV"])(_sw_pagination_sw_pagination__WEBPACK_IMPORTED_MODULE_7__["SwPagination"], {
       value: state.currentPage,
       updatePage: updatePageHandler
     }, void 0, false, {
       fileName: _jsxFileName,
-      lineNumber: 89,
+      lineNumber: 88,
       columnNumber: 7
     }, undefined)]
   }, void 0, true, {
     fileName: _jsxFileName,
-    lineNumber: 83,
+    lineNumber: 82,
     columnNumber: 5
   }, undefined);
 };

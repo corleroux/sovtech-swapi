@@ -37,11 +37,11 @@ export const PeopleGrid: FC<PeopleGridProps> = (props) => {
     setCharacterSearch(event.datum.name);
   };
 
-  const { data, loading, error } = useFetchPageQuery({
-    variables: {
-      fetchPagePage: curPage.toString(),
-    },
-  });
+  // const { data, loading, error } = useFetchPageQuery({
+  //   variables: {
+  //     fetchPagePage: curPage.toString(),
+  //   },
+  // });
 
   useEffect(() => {
     if (state.currentPage) {
@@ -50,10 +50,6 @@ export const PeopleGrid: FC<PeopleGridProps> = (props) => {
       setCurPage(1);
     }
   }, []);
-
-  if (loading) return <p>loading...</p>;
-  if (error) return <p>Error - please try again later</p>;
-  const tableData: RowType[] | undefined = DATA(data);
 
   const updatePageHandler = (page: string | number) => {
     switch (page) {
@@ -82,8 +78,9 @@ export const PeopleGrid: FC<PeopleGridProps> = (props) => {
     <StyledPeopleGrid>
       <PeopleGridUi
         handleClicks={handleClick}
-        tableData={tableData}
         columns={columns}
+        curPage={curPage}
+        DATA={DATA}
       />
       <SwPagination value={state.currentPage} updatePage={updatePageHandler} />
     </StyledPeopleGrid>

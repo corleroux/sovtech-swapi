@@ -7,7 +7,7 @@ import { PeopleProvider } from '@sovtech-swapi/data-access';
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  uri: 'http://3.248.199.115:3333/graphql',
+  uri: 'http://localhost:3333/graphql',
 });
 
 export const App = () => {

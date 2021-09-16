@@ -131,7 +131,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.schema = void 0;
 const graphql_1 = __webpack_require__(/*! graphql */ "graphql");
 const node_fetch_1 = __webpack_require__(/*! node-fetch */ "node-fetch");
-const BASE_URL = process.env.base_url || 'https://3.248.199.115/api';
+const BASE_URL = process.env.base_url || 'http://3.248.199.115/api';
 function getPersonByUrl(url) {
     return node_fetch_1.default(url)
         .then((res) => res.json())
