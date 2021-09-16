@@ -101,9 +101,13 @@ const express = __webpack_require__(/*! express */ "express");
 const apollo_server_express_1 = __webpack_require__(/*! apollo-server-express */ "apollo-server-express");
 const sw_schema_1 = __webpack_require__(/*! ./sw-schema */ "./apps/api/src/sw-schema.js");
 const http = __webpack_require__(/*! http */ "http");
+const cors = __webpack_require__(/*! cors */ "cors");
 function startApolloServer(schema) {
     return tslib_1.__awaiter(this, void 0, void 0, function* () {
         const app = express();
+        app.use(cors({
+            origin: '*',
+        }));
         const httpServer = http.createServer(app);
         const server = new apollo_server_express_1.ApolloServer({ schema });
         yield server.start();
@@ -131,7 +135,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.schema = void 0;
 const graphql_1 = __webpack_require__(/*! graphql */ "graphql");
 const node_fetch_1 = __webpack_require__(/*! node-fetch */ "node-fetch");
-const BASE_URL = process.env.base_url || 'http://3.248.199.115/api';
+const BASE_URL = process.env.base_url || 'https://swapi.dev/api';
 function getPersonByUrl(url) {
     console.log(url);
     return node_fetch_1.default(url)
@@ -233,6 +237,17 @@ module.exports = __webpack_require__(/*! /home/cor/Projects/Collectif/sovtech-sw
 /***/ (function(module, exports) {
 
 module.exports = require("apollo-server-express");
+
+/***/ }),
+
+/***/ "cors":
+/*!***********************!*\
+  !*** external "cors" ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("cors");
 
 /***/ }),
 

@@ -7,7 +7,7 @@ import { PeopleProvider } from '@sovtech-swapi/data-access';
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  uri: 'https://0d2b-41-216-202-175.ngrok.io/graphql',
+  uri: 'http://sovtech-swapi-api.collectif.link/graphql',
 });
 
 export const App = () => {
