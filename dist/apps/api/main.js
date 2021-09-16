@@ -84,24 +84,26 @@
 /******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
-/******/ ({
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
 
-/***/ "./apps/api/src/main.ts":
-/*!******************************!*\
-  !*** ./apps/api/src/main.ts ***!
-  \******************************/
-/*! no static exports found */
+module.exports = __webpack_require__(1);
+
+
+/***/ }),
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const tslib_1 = __webpack_require__(/*! tslib */ "tslib");
-const express = __webpack_require__(/*! express */ "express");
-const apollo_server_express_1 = __webpack_require__(/*! apollo-server-express */ "apollo-server-express");
-const sw_schema_1 = __webpack_require__(/*! ./sw-schema */ "./apps/api/src/sw-schema.js");
-const http = __webpack_require__(/*! http */ "http");
-const cors = __webpack_require__(/*! cors */ "cors");
+const tslib_1 = __webpack_require__(2);
+const express = __webpack_require__(3);
+const apollo_server_express_1 = __webpack_require__(4);
+const sw_schema_1 = __webpack_require__(5);
+const http = __webpack_require__(8);
+const cors = __webpack_require__(9);
 function startApolloServer(schema) {
     return tslib_1.__awaiter(this, void 0, void 0, function* () {
         const app = express();
@@ -121,20 +123,33 @@ startApolloServer(sw_schema_1.schema);
 
 
 /***/ }),
+/* 2 */
+/***/ (function(module, exports) {
 
-/***/ "./apps/api/src/sw-schema.js":
-/*!***********************************!*\
-  !*** ./apps/api/src/sw-schema.js ***!
-  \***********************************/
-/*! no static exports found */
+module.exports = require("tslib");
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+module.exports = require("express");
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+module.exports = require("apollo-server-express");
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.schema = void 0;
-const graphql_1 = __webpack_require__(/*! graphql */ "graphql");
-const node_fetch_1 = __webpack_require__(/*! node-fetch */ "node-fetch");
+const graphql_1 = __webpack_require__(6);
+const node_fetch_1 = __webpack_require__(7);
 const BASE_URL = process.env.base_url || 'https://swapi.dev/api';
 function getPersonByUrl(url) {
     console.log(url);
@@ -216,95 +231,29 @@ exports.schema = schema;
 
 
 /***/ }),
-
-/***/ 0:
-/*!************************************!*\
-  !*** multi ./apps/api/src/main.ts ***!
-  \************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! /home/cor/Projects/Collectif/sovtech-swapi/apps/api/src/main.ts */"./apps/api/src/main.ts");
-
-
-/***/ }),
-
-/***/ "apollo-server-express":
-/*!****************************************!*\
-  !*** external "apollo-server-express" ***!
-  \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("apollo-server-express");
-
-/***/ }),
-
-/***/ "cors":
-/*!***********************!*\
-  !*** external "cors" ***!
-  \***********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("cors");
-
-/***/ }),
-
-/***/ "express":
-/*!**************************!*\
-  !*** external "express" ***!
-  \**************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("express");
-
-/***/ }),
-
-/***/ "graphql":
-/*!**************************!*\
-  !*** external "graphql" ***!
-  \**************************/
-/*! no static exports found */
+/* 6 */
 /***/ (function(module, exports) {
 
 module.exports = require("graphql");
 
 /***/ }),
-
-/***/ "http":
-/*!***********************!*\
-  !*** external "http" ***!
-  \***********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("http");
-
-/***/ }),
-
-/***/ "node-fetch":
-/*!*****************************!*\
-  !*** external "node-fetch" ***!
-  \*****************************/
-/*! no static exports found */
+/* 7 */
 /***/ (function(module, exports) {
 
 module.exports = require("node-fetch");
 
 /***/ }),
-
-/***/ "tslib":
-/*!************************!*\
-  !*** external "tslib" ***!
-  \************************/
-/*! no static exports found */
+/* 8 */
 /***/ (function(module, exports) {
 
-module.exports = require("tslib");
+module.exports = require("http");
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports) {
+
+module.exports = require("cors");
 
 /***/ })
-
-/******/ })));
+/******/ ])));
 //# sourceMappingURL=main.js.map
