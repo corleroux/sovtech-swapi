@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import Pagination from './pagination';
+import SwPagination from './sw-pagination';
 
-describe('Pagination', () => {
+describe('SwPagination', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<Pagination />);
+    const { baseElement } = render(<SwPagination />);
     expect(baseElement).toBeTruthy();
   });
 });

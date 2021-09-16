@@ -14,68 +14,41 @@ import React, {
   useCallback,
   useReducer,
 } from 'react';
-
-// STATE
-
-export interface IPeopleContextProps {
-  state: IPeopleState;
-  getPeopleState: () => IPeopleState;
-  setShowPerson: (data: boolean | undefined) => void;
-  setPeopleData: (data: RowType | undefined) => void;
-}
+import { PeopleReducer } from '../reducer/PeopleReducer';
+import {
+  IPeopleContextProps,
+  IPeopleReducerAction,
+  IPeopleState,
+  PeopleProviderProps,
+} from '../types';
+import { Maybe } from 'graphql/jsutils/Maybe';
 
 export const InitialPeopleState: IPeopleState = {
   show: false,
   person: initialRowType,
+  currentPage: 1,
+  characterSearch: '',
+  pageSearch: 1,
 };
 
 export const initialPeopleContext: IPeopleContextProps = {
-  state: {},
+  state: { currentPage: 1 },
   getPeopleState: () => InitialPeopleState,
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   setShowPerson: (x) => x,
   setPeopleData: (x) => x,
+  setCurrentPage: (x) => x,
+  setCharacterSearch: (x) => x,
+  setPageSearch: (x) => x,
 };
 
 export const PeopleContext: React.Context<IPeopleContextProps> =
   createContext(initialPeopleContext);
 
-// const SHOW_PERSON = 'LOADING';
-// const PERSON_DATA = 'PERSON_DATA';
-
-export interface IPeopleState {
-  show?: boolean;
-  person?: RowType;
-}
-
-export interface IPeopleReducerAction extends IPeopleState {
-  handler: string;
-  payload: IPeopleState;
-}
-
-const reducer = (state: IPeopleState, action: IPeopleReducerAction) => {
-  console.log('This is reducer', { action, state });
-  const { handler } = action;
-  if (handler === 'SHOW_PERSON') {
-    console.log(action);
-    state = { ...state, show: action.payload.show };
-    return state;
-  }
-  if (handler === 'PERSON_DATA') {
-    state = { ...state, person: action.payload.person };
-  }
-  return state;
-};
-
-/* eslint-disable-next-line */
-export interface PeopleProviderProps {
-  children?: React.ReactNode;
-}
-//  type Provider<T> = ProviderExoticComponent<ProviderProps<T>>;
 export const PeopleProvider = ({ children }: PeopleProviderProps) => {
   const [state, dispatch] = useReducer<
     Reducer<IPeopleState, IPeopleReducerAction>
-  >(reducer, InitialPeopleState);
+  >(PeopleReducer, InitialPeopleState);
 
   const setPeopleData = useCallback(
     (data: RowType | undefined) => {
@@ -97,9 +70,47 @@ export const PeopleProvider = ({ children }: PeopleProviderProps) => {
     [dispatch]
   );
 
+  const setCurrentPage = useCallback(
+    (data: number | undefined) => {
+      dispatch({
+        handler: 'SET_PAGE',
+        payload: { currentPage: data },
+      });
+    },
+    [dispatch]
+  );
+
+  const setCharacterSearch = useCallback(
+    (data: Maybe<string> | undefined) => {
+      dispatch({
+        handler: 'SET_CHARACTER_SEARCH',
+        payload: { characterSearch: data },
+      });
+    },
+    [dispatch]
+  );
+
+  const setPageSearch = useCallback(
+    (data: number | undefined) => {
+      dispatch({
+        handler: 'SET_PAGE_SEARCH',
+        payload: { pageSearch: data },
+      });
+    },
+    [dispatch]
+  );
+
   const getPeopleState = () => state;
 
-  const value = { state, getPeopleState, setShowPerson, setPeopleData };
+  const value = {
+    state,
+    getPeopleState,
+    setShowPerson,
+    setPeopleData,
+    setCurrentPage,
+    setCharacterSearch,
+    setPageSearch,
+  };
   return (
     <PeopleContext.Provider value={value}>{children}</PeopleContext.Provider>
   );

@@ -1,10 +1,11 @@
-import { Box, Button, Heading, Layer, Text } from 'grommet';
+import { Box, Button, grommet, Grommet, Heading, Layer, Text } from 'grommet';
+import { hpe } from 'grommet-theme-hpe';
 import ListItem from '../list-item/list-item';
 import { List } from '../list/list';
 import styled from 'styled-components';
-import { useFetchPersonQuery } from '@sovtech-swapi/data-access';
-import { FC } from 'react';
-
+import { PeopleContext, useFetchPersonQuery } from '@sovtech-swapi/data-access';
+import { FC, useContext } from 'react';
+import { FormUp } from 'grommet-icons';
 /* eslint-disable-next-line */
 export interface PersonProps {}
 
@@ -13,9 +14,12 @@ const StyledPerson = styled.div`
 `;
 
 export const Person: FC<PersonProps> = (props) => {
+  const { state, getPeopleState, setShowPerson } = useContext(PeopleContext);
+  const compState = () => getPeopleState();
+  const { show, person, characterSearch } = compState();
   const { data, loading, error } = useFetchPersonQuery({
     variables: {
-      name: 'Luke Skywalker',
+      name: characterSearch,
     },
   });
   if (loading) return <p>loading...</p>;
@@ -24,20 +28,18 @@ export const Person: FC<PersonProps> = (props) => {
 
   return (
     <StyledPerson>
-      {/* <Layer
-        position="center"
-        onEsc={() => setShow(false)}
-        onClickOutside={() => setShow(false)}
-      >
-        <Box margin="medium">
-          <Text>{clicked && JSON.stringify(clicked, null, 2)}</Text>
+      <Box align="left" pad="small">
+        <Box overflow="hidden" background="neutral-1">
           <Button
-            margin={{ top: 'medium' }}
-            label="close"
-            onClick={() => setShow(false)}
+            icon={<FormUp />}
+            label="Back"
+            hoverIndicator
+            onClick={() => {
+              setShowPerson(false);
+            }}
           />
         </Box>
-      </Layer> */}
+      </Box>
       {data?.fetchPerson?.people?.map((person, index) => (
         <div key={index}>
           <Box align="center" pad="large">

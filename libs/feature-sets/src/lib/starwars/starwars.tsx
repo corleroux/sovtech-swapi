@@ -1,5 +1,5 @@
 import { PeopleContext } from '@sovtech-swapi/data-access';
-import { Person } from '@sovtech-swapi/feature-sets';
+import { Person } from '../person/person';
 import { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import { PeopleGrid } from '../people-grid/people-grid';

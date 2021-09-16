@@ -1,4 +1,4 @@
-import { FetchPeopleQuery } from '@sovtech-swapi/data-access';
+import { FetchPageQuery, FetchPeopleQuery } from '@sovtech-swapi/data-access';
 import { Maybe } from 'graphql/jsutils/Maybe';
 import { ColumnConfig, KeyPress, MouseClick, Text } from 'grommet';
 
@@ -60,10 +60,10 @@ export const initialRowType: RowType = {
   gender: '',
 };
 
-export const DATA = (data: FetchPeopleQuery | undefined) => {
+export const DATA = (data: FetchPageQuery | undefined) => {
   let x: RowType = initialRowType;
   if (data) {
-    const ret = data.fetchPeople?.people?.map((person, index) => {
+    const ret = data.fetchPage?.people?.map((person, index) => {
       x = {
         name: person?.name,
         height: person?.height,
