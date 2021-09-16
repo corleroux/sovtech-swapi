@@ -959,31 +959,60 @@ const DATA = data => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PeopleGridUi", function() { return PeopleGridUi; });
-/* harmony import */ var grommet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! grommet */ "../../../node_modules/grommet/es6/index.js");
-/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-dev-runtime */ "../../../node_modules/react/jsx-dev-runtime.js");
-/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var core_js_modules_es_regexp_to_string_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.regexp.to-string.js */ "../../../node_modules/core-js/modules/es.regexp.to-string.js");
+/* harmony import */ var core_js_modules_es_regexp_to_string_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_regexp_to_string_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _sovtech_swapi_data_access__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @sovtech-swapi/data-access */ "../../../libs/data-access/src/index.ts");
+/* harmony import */ var grommet__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! grommet */ "../../../node_modules/grommet/es6/index.js");
+/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-dev-runtime */ "../../../node_modules/react/jsx-dev-runtime.js");
+/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_3__);
 var _jsxFileName = "/home/cor/Projects/Collectif/sovtech-swapi/libs/feature-sets/src/lib/people-grid/people-grid-ui.tsx";
 
 
+
+
 const PeopleGridUi = props => {
-  return /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_1__["jsxDEV"])(grommet__WEBPACK_IMPORTED_MODULE_0__["Box"], {
+  const {
+    data,
+    loading,
+    error
+  } = Object(_sovtech_swapi_data_access__WEBPACK_IMPORTED_MODULE_1__["useFetchPageQuery"])({
+    variables: {
+      fetchPagePage: props.curPage.toString()
+    }
+  });
+  if (loading) return /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_3__["jsxDEV"])("p", {
+    children: "loading..."
+  }, void 0, false, {
+    fileName: _jsxFileName,
+    lineNumber: 23,
+    columnNumber: 23
+  }, undefined);
+  if (error) return /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_3__["jsxDEV"])("p", {
+    children: "Error - please try again later"
+  }, void 0, false, {
+    fileName: _jsxFileName,
+    lineNumber: 24,
+    columnNumber: 21
+  }, undefined);
+  const tableData = props.DATA(data);
+  return /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_3__["jsxDEV"])(grommet__WEBPACK_IMPORTED_MODULE_2__["Box"], {
     align: "center",
     pad: "large",
-    children: /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_1__["jsxDEV"])(grommet__WEBPACK_IMPORTED_MODULE_0__["DataTable"], {
+    children: /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_3__["jsxDEV"])(grommet__WEBPACK_IMPORTED_MODULE_2__["DataTable"], {
       columns: props.columns,
-      data: props.tableData,
+      data: tableData,
       step: 10,
       sortable: true,
       paginate: true,
       onClickRow: event => props.handleClicks(event)
     }, void 0, false, {
       fileName: _jsxFileName,
-      lineNumber: 12,
+      lineNumber: 29,
       columnNumber: 7
     }, undefined)
   }, void 0, false, {
     fileName: _jsxFileName,
-    lineNumber: 11,
+    lineNumber: 28,
     columnNumber: 5
   }, undefined);
 };
@@ -1051,15 +1080,12 @@ const PeopleGrid = props => {
     setCharacterSearch(event.datum.name);
   };
 
-  const {
-    data,
-    loading,
-    error
-  } = Object(_sovtech_swapi_data_access__WEBPACK_IMPORTED_MODULE_6__["useFetchPageQuery"])({
+  const test = Object(_sovtech_swapi_data_access__WEBPACK_IMPORTED_MODULE_6__["useFetchPageQuery"])({
     variables: {
       fetchPagePage: curPage.toString()
     }
   });
+  console.log('TEST', test);
   Object(react__WEBPACK_IMPORTED_MODULE_3__["useEffect"])(() => {
     if (state.currentPage) {
       setCurPage(state.currentPage);
@@ -1067,21 +1093,21 @@ const PeopleGrid = props => {
       setCurPage(1);
     }
   }, []);
-  if (loading) return /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_9__["jsxDEV"])("p", {
+  if (test.loading) return /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_9__["jsxDEV"])("p", {
     children: "loading..."
   }, void 0, false, {
     fileName: _jsxFileName,
-    lineNumber: 54,
-    columnNumber: 23
+    lineNumber: 56,
+    columnNumber: 28
   }, undefined);
-  if (error) return /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_9__["jsxDEV"])("p", {
+  if (test.error) return /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_9__["jsxDEV"])("p", {
     children: "Error - please try again later"
   }, void 0, false, {
     fileName: _jsxFileName,
-    lineNumber: 55,
-    columnNumber: 21
+    lineNumber: 57,
+    columnNumber: 26
   }, undefined);
-  const tableData = Object(_people_grid_data__WEBPACK_IMPORTED_MODULE_4__["DATA"])(data);
+  const tableData = Object(_people_grid_data__WEBPACK_IMPORTED_MODULE_4__["DATA"])(test.data);
 
   const updatePageHandler = page => {
     switch (page) {
@@ -1098,12 +1124,12 @@ const PeopleGrid = props => {
           if (state.currentPage === 1) {
             setCurrentPage(state.currentPage);
             setCurPage(state.currentPage);
+          } else {
+            if (state.currentPage) {
+              setCurrentPage(state.currentPage - 1);
+              setCurPage(state.currentPage - 1);
+            }
           }
-        }
-
-        if (state.currentPage) {
-          setCurrentPage(state.currentPage - 1);
-          setCurPage(state.currentPage - 1);
         }
 
         break;
@@ -1113,23 +1139,24 @@ const PeopleGrid = props => {
   return /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_9__["jsxDEV"])(StyledPeopleGrid, {
     children: [/*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_9__["jsxDEV"])(_people_grid_ui__WEBPACK_IMPORTED_MODULE_8__["PeopleGridUi"], {
       handleClicks: handleClick,
-      tableData: tableData,
-      columns: _people_grid_data__WEBPACK_IMPORTED_MODULE_4__["columns"]
+      columns: _people_grid_data__WEBPACK_IMPORTED_MODULE_4__["columns"],
+      curPage: curPage,
+      DATA: _people_grid_data__WEBPACK_IMPORTED_MODULE_4__["DATA"]
     }, void 0, false, {
       fileName: _jsxFileName,
-      lineNumber: 83,
+      lineNumber: 86,
       columnNumber: 7
     }, undefined), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_9__["jsxDEV"])(_sw_pagination_sw_pagination__WEBPACK_IMPORTED_MODULE_7__["SwPagination"], {
       value: state.currentPage,
       updatePage: updatePageHandler
     }, void 0, false, {
       fileName: _jsxFileName,
-      lineNumber: 88,
+      lineNumber: 92,
       columnNumber: 7
     }, undefined)]
   }, void 0, true, {
     fileName: _jsxFileName,
-    lineNumber: 82,
+    lineNumber: 85,
     columnNumber: 5
   }, undefined);
 };
@@ -3750,7 +3777,7 @@ var _jsxFileName = "/home/cor/Projects/Collectif/sovtech-swapi/apps/sovtech-swap
 
 const client = new _apollo_client__WEBPACK_IMPORTED_MODULE_1__["ApolloClient"]({
   cache: new _apollo_client__WEBPACK_IMPORTED_MODULE_1__["InMemoryCache"](),
-  uri: 'http://3.248.199.115:3333/graphql'
+  uri: 'https://0d2b-41-216-202-175.ngrok.io/graphql'
 });
 const App = () => {
   return /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_6__["jsxDEV"])(_apollo_client__WEBPACK_IMPORTED_MODULE_1__["ApolloProvider"], {
