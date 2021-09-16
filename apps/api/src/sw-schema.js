@@ -13,6 +13,7 @@ import fetch from 'node-fetch';
 const BASE_URL = process.env.base_url || 'https://swapi.dev/api';
 
 function getPersonByUrl(url) {
+  console.log(url);
   return fetch(url)
     .then((res) => res.json())
     .catch((err) => {
@@ -27,21 +28,15 @@ function getPersonBySearch(search) {
 
 function getPeoplePage(page) {
   console.log(`${BASE_URL}/people/?page=${page}`);
-  return getPersonByUrl(`${BASE_URL}/people/?page=${page}`);
+  const url = 'https://swapi.dev/api/people/?page=1';
+  const url2 = `${BASE_URL}/people/?page=${page}`;
+  //return getPersonByUrl(`${BASE_URL}/people/${page}`);
+  return getPersonByUrl(url2);
 }
 
 const fetchPeople = () => {
   return getPersonByUrl(`${BASE_URL}/people`);
 };
-
-const PeopleFilter = new GraphQLInputObjectType({
-  name: 'GeoPoint',
-  fields: {
-    lat: { type: new GraphQLNonNull(GraphQLFloat) },
-    lon: { type: new GraphQLNonNull(GraphQLFloat) },
-    alt: { type: GraphQLFloat, defaultValue: 0 },
-  },
-});
 
 const PeopleType = new GraphQLObjectType({
   name: 'People',
@@ -99,7 +94,5 @@ const QueryType = new GraphQLObjectType({
 const schema = new GraphQLSchema({
   query: QueryType,
 });
-
-console.log(printSchema(schema));
 
 export { schema };
