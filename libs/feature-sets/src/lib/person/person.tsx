@@ -54,10 +54,13 @@ interface IAreaMap {
 
 const columns: Map = {
   small: ['auto'],
-  medium: ['auto', 'auto'],
+  medium: ['auto'],
+  large: ['auto', 'auto'],
+  xlarge: ['auto', 'auto'],
 };
 
 const rows: Map = {
+  small: ['xsmall', 'xsmall'],
   medium: ['xsmall', 'xsmall'],
   large: ['xsmall'],
   xlarge: ['xsmall'],
@@ -73,20 +76,18 @@ const fixedGridAreas: IAreaMap = {
 
   medium: [
     { name: 'header', start: [0, 0], end: [0, 0] },
+    { name: 'test', start: [0, 1], end: [0, 1] },
+  ],
+
+  large: [
+    { name: 'header', start: [0, 0], end: [0, 0] },
     { name: 'test', start: [1, 0], end: [1, 0] },
   ],
 
-  // large: [
-  //   { name: 'header', start: [0, 0], end: [0, 0] },
-  //   { name: 'test', start: [1, 0], end: [1, 0] },
-  //   { name: 'test1', start: [2, 0], end: [2, 0] },
-  // ],
-
-  // xlarge: [
-  //   { name: 'header', start: [0, 0], end: [0, 0] },
-  //   { name: 'test', start: [1, 0], end: [1, 0] },
-  //   { name: 'test1', start: [2, 0], end: [2, 0] },
-  // ],
+  xlarge: [
+    { name: 'header', start: [0, 0], end: [0, 0] },
+    { name: 'test', start: [1, 0], end: [1, 0] },
+  ],
 };
 
 interface Responsive {
